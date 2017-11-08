@@ -1,0 +1,102 @@
+﻿@model VideogamesCodex.Models.Videogames
+@{
+    ViewBag.Title = "Formulario Videojuego";
+}
+
+
+<ol class="breadcrumb">
+    <li><a href="~/">Crear / Modificar Videojuego</a></li>
+    <li class="active">@(Model.id < 0 ? Model.name : "Nuevo registro")</li>
+</ol>
+
+
+@using (Html.BeginForm("Guardar", "Home", FormMethod.Post, new { id = "frm-tarea" }))
+{
+    @Html.HiddenFor(x => x.id)
+    <div class="panel panel-default">
+        <div class="panel-heading">Información del Videojuego</div>
+        <div class="panel-body">
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.name)
+                @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.name, null, new { @class = "label label-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.publisher)
+                @Html.TextBoxFor(x => x.publisher, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.publisher, null, new { @class = "label label-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.year)
+                @Html.TextBoxFor(x => x.year, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.year, null, new { @class = "label label-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Género")
+                <select name="Genre" class="form-control">
+                    <option @(Model.Genre == genre.Unknow ? "selected" : "") value="0">Otro</option>
+                    <option @(Model.Genre == genre.Action ? "selected" : "") value="1">Acción</option>
+                    <option @(Model.Genre == genre.Adventure ? "selected" : "") value="2">Aventura</option>
+                    <option @(Model.Genre == genre.Strategy ? "selected" : "") value="3">Estrategia</option>
+                    <option @(Model.Genre == genre.RPG ? "selected" : "") value="4">RPG</option>
+                    <option @(Model.Genre == genre.Sport ? "selected" : "") value="5">Deportes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Plataforma")
+                <select name="Platform" class="form-control">
+                    <option @(Model.Platform == platform.Unknow ? "selected" : "") value="0">Desconocido</option>
+                    <option @(Model.Platform == platform.PC ? "selected" : "") value="1">Ordenador</option>
+                    <option @(Model.Platform == platform.PS4 ? "selected" : "") value="2">PS4</option>
+                    <option @(Model.Platform == platform.XBOXONE ? "selected" : "") value="3">XBOX ONE</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Puntuación")
+                <select name="Score" class="form-control">
+                    <option @(Model.Score == score.Sinremedio ? "selected" : "") value="00">Sinremedio</option>
+                    <option @(Model.Score == score.Horrible ? "selected" : "") value="10">Horrible</option>
+                    <option @(Model.Score == score.Malo ? "selected" : "") value="20">Malo</option>
+                    <option @(Model.Score == score.Mejorable ? "selected" : "") value="30">Mejorable</option>
+                    <option @(Model.Score == score.Suficiente ? "selected" : "") value="40">Suficiente</option>
+                    <option @(Model.Score == score.Aprobado ? "selected" : "") value="50">Aprobado</option>
+                    <option @(Model.Score == score.Bueno ? "selected" : "") value="60">Bueno</option>
+                    <option @(Model.Score == score.Notable ? "selected" : "") value="70">Notable</option>
+                    <option @(Model.Score == score.Excelente ? "selected" : "") value="80">Excelente</option>
+                    <option @(Model.Score == score.Sobresaliente ? "selected" : "") value="90">Sobresaliente</option>
+                    <option @(Model.Score == score.Perfecto ? "selected" : "") value="100">Perfecto</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("¿Es Online?")
+                <select name="Online" class="form-control">
+                    <option @(Model.Online == online.No ? "selected" : "") value="0">No</option>
+                    <option @(Model.Online == online.Sí ? "selected" : "") value="1">Sí</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("PEGI")
+                <select name="Pegi" class="form-control">
+                    <option @(Model.Pegi == pegi.Unknow ? "selected" : "") value="0">Sin evaluar</option>
+                    <option @(Model.Pegi == pegi.pegi3 ? "selected" : "") value="1">+3</option>
+                    <option @(Model.Pegi == pegi.pegi6 ? "selected" : "") value="2">+6</option>
+                    <option @(Model.Pegi == pegi.pegi12 ? "selected" : "") value="3">+12</option>
+                    <option @(Model.Pegi == pegi.pegi18 ? "selected" : "") value="4">+18</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="text-right">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+}

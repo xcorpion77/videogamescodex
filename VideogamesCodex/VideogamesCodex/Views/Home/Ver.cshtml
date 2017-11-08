@@ -1,0 +1,32 @@
+﻿@model VideogamesCodex.Models.Videogames
+@{
+    ViewBag.Title = "Ver";
+}
+
+<h2>Ver</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Información del videojuego</div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Nombre</dt>
+            <dd>@Model.name</dd>
+            <dt>Distribuidor</dt>
+            <dd>@(Model.publisher)</dd>
+            <dt>Año de publicación</dt>
+            <dd>@Model.year</dd>
+            <dt>Género de Juego</dt>
+            <dd>@Model.Genre</dd>
+            <dt>Plataforma</dt>
+            <dd>@Model.Platform</dd>
+            <dt>Puntuación</dt>
+            <dd>@Model.Score</dd>
+            <dt>Multijugador</dt>
+            <dd>@Model.Online</dd>
+            <dt>PEGI</dt>
+            <dd>@Model.Pegi</dd>
+
+
+        </dl>
+    </div>
+</div>
