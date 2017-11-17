@@ -1,0 +1,29 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>Videogames Codex</h1>
+    <p class="lead">Game List</p>
+    <p><a href="/crear/" class="btn btn-primary btn-large">New Game</a></p>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Publisher</th>
+        <th>Genre</th>
+
+
+    {% for videogame in videogames %}
+    <tr>
+        <td>{{videogame.name}}</td>
+        <td>{{videogame.publisher}}</td>
+        <td>{{videogame.get_genre_display}}</td>
+        <td><a class="btn btn-success" href="/videogame/{{videogame.id}}">Ver</a></td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <h3 class="text-center">Game Title: {{videogame.name}}</h3>
+    <div class="panel-heading">
+    <div class="text-right">
+        <a role="button" class="btn btn-warning" href="/modificar/{{videogame.id}}">Editar</a>
+        <a onclick="return confirm('¿Deseas eliminar esta videogame?');"
+       role="button" class="btn btn-danger" href="/borrar/{{videogame.id}}">Borrar</a>
+    </div>
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Name</dt>
+            <dd>{{videogame.name}}</dd>
+            <dt>Publisher</dt>
+            <dd>{{videogame.publisher}}</dd>
+            <dt>Year</dt>
+            <dd>{{videogame.year}}</dd>
+            <dt>Genre</dt>
+            <dd>{{videogame.get_genre_display}}</dd>
+            <dt>Platform</dt>
+            <dd>{{videogame.get_platform_display}}</dd>
+            <dt>Score</dt>
+            <dd>{{videogame.score}}</dd>
+            <dt>Online</dt>
+            <dd>{{videogame.online}}</dd>
+            <dt>Pegi</dt>
+            <dd>{{videogame.get_pegi_display}}</dd>
+        </dl>
+    </div>
+</div>
+
+{% endblock %}
